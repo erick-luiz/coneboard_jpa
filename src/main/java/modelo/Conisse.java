@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -8,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -21,8 +23,8 @@ public class Conisse {
 	private String descricao;
 
 	// os tipos padrões a JPA manda ver, neste caso é um ENUM então informamos que
-	//    é um enumeravel nosso e o que a JPA deve persistir no Banco: a string
-	//    referente ao ENUM ou o int relacionado a ordem dele;
+	// é um enumeravel nosso e o que a JPA deve persistir no Banco: a string
+	// referente ao ENUM ou o int relacionado a ordem dele;
 	@Enumerated(EnumType.STRING)
 	private TipoDeConisse tipo;
 
@@ -31,6 +33,26 @@ public class Conisse {
 	// managed na hora da persistencia da conisse.
 	@ManyToOne
 	private Cone cone;
+
+	// Esse relacionamento deve criar uma tabela de relacionamento utilizando como
+	// convenção o nome desta classe (que possui o relacionamento) _ o nome
+	// categoria.
+	/*
+	 create table Conisse_Categoria (
+       Conisse_id bigint not null,
+        categorias_id bigint not null
+    ) engine=InnoDB
+	 */
+	@ManyToMany
+	private List<Categoria> categorias;
+
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
 
 	public long getId() {
 		return id;

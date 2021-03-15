@@ -11,6 +11,9 @@
         	Para garantir uma possivel mudança de provider é legal configurar as classes
          -->
         <class>br.com.coneboard.modelo.Cone</class>
+        <class>br.com.coneboard.modelo.Conisse</class>
+        <class>br.com.coneboard.modelo.Categoria</class>
+        <class>br.com.coneboard.modelo.Usuario</class>
 
         <properties>
             <!-- Configurações da JPA para acesso ao banco -->
