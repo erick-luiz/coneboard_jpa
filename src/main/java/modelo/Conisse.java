@@ -93,4 +93,9 @@ public class Conisse {
 	public void setCone(Cone cone) {
 		this.cone = cone;
 	}
+	
+	@Override
+	public String toString() {
+		return "tipo: " + this.tipo + " cone:" + cone.getNome() + " id:" + this.id + " categorias:" + this.categorias;
+	}
 }
